@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+header {
+  padding: 4rem 0;
+  
+  gap: 1.5rem;
+  display: flex;
+  flex-flow: column;
+}
+
+.logo {
+  max-height: 6rem;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  font-style: italic;
+  margin-top: 0;
+}

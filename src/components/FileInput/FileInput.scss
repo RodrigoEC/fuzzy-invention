@@ -1,0 +1,31 @@
+.file-input-wrapper {
+    width: fit-content;
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.file-input-label {
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    
+}
+
+.file-input-label:hover {
+    opacity: 0.75;
+    transform: scale(1.05);
+}
+
+.file-input-no-file {
+    opacity: 0.6
+}
