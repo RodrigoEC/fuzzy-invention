@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler, Controller, useWatch } from "react-hook-form";
 import "./ImportMoviesForm.scss";
 import FileInput from "../FileInput/FileInput";
 import { Button } from "@progress/kendo-react-buttons";
@@ -10,9 +10,9 @@ type FormTypes = {
 const ImportMoviesForm = () => {
   const { handleSubmit, control } = useForm<FormTypes>();
 
+  const formState = useWatch({ control });
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
     console.log(data);
-    console.log(typeof data.file);
   };
 
   return (
@@ -20,7 +20,7 @@ const ImportMoviesForm = () => {
       <Controller
         control={control}
         name={"file"}
-        render={({ field: { value, onChange, ...field } }) => {
+        render={({ field: { value, onChange, ref, ...field } }) => {
           return (
             <FileInput
               {...field}
@@ -32,7 +32,12 @@ const ImportMoviesForm = () => {
         }}
       />
 
-      <Button disabled={control.getFieldState("file") !== undefined} className="file-form-button" themeColor={"primary"} type={"submit"}>
+      <Button
+        disabled={formState.file === undefined}
+        className="file-form-button"
+        themeColor={"primary"}
+        type={"submit"}
+      >
         Send
       </Button>
     </form>

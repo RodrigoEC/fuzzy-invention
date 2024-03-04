@@ -1,8 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
-import { FieldWrapper } from "@progress/kendo-react-form";
-import { Label } from "@progress/kendo-react-labels";
+import { ChangeEvent, useState } from "react";
 import "./FileInput.scss";
-import { Button } from "@progress/kendo-react-buttons";
 import { shortenFilename } from "../../util/util";
 
 function FileInput({
@@ -40,10 +37,13 @@ function FileInput({
         name={id}
         type="file"
         accept=".csv"
-        {...registerProps}
         onChange={(e) => onFileChange(e, onChange)}
+        {...registerProps}
       />
-      <span title={filename} className={filename ? "file-input-uploaded" : "file-input-no-file"}>
+      <span
+        title={filename}
+        className={filename ? "file-input-uploaded" : "file-input-no-file"}
+      >
         {filename ? shortenFilename(filename) : "No file uploaded yet"}
       </span>
     </fieldset>
