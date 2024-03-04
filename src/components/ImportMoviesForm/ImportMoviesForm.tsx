@@ -1,7 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Label } from "@progress/kendo-react-labels";
-import { Input, InputChangeEvent } from "@progress/kendo-react-inputs";
 import "./ImportMoviesForm.scss";
 import FileInput from "../FileInput/FileInput";
 import { Button } from "@progress/kendo-react-buttons";
@@ -17,9 +14,6 @@ const ImportMoviesForm = () => {
     console.log(data);
     console.log(typeof data.file);
   };
-
-
-  
 
   return (
     <form className="file-form" onSubmit={handleSubmit(onSubmit)}>
@@ -38,7 +32,7 @@ const ImportMoviesForm = () => {
         }}
       />
 
-      <Button themeColor={"primary"} type={"submit"}>
+      <Button disabled={control.getFieldState("file") !== undefined} className="file-form-button" themeColor={"primary"} type={"submit"}>
         Send
       </Button>
     </form>

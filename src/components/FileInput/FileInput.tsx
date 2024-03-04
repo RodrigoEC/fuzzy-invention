@@ -3,6 +3,7 @@ import { FieldWrapper } from "@progress/kendo-react-form";
 import { Label } from "@progress/kendo-react-labels";
 import "./FileInput.scss";
 import { Button } from "@progress/kendo-react-buttons";
+import { shortenFilename } from "../../util/util";
 
 function FileInput({
   id,
@@ -14,7 +15,7 @@ function FileInput({
   label: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }) {
-  const [fileName, setFileName] = useState<string>("");
+  const [filename, setFilename] = useState<string | undefined>(undefined);
 
   const onFileChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -22,7 +23,8 @@ function FileInput({
   ) => {
     if (event.target.files) {
       const file = event.target.files[0];
-      setFileName(file?.name);
+
+      setFilename(file?.name);
       onChange(file);
     }
   };
@@ -41,8 +43,8 @@ function FileInput({
         {...registerProps}
         onChange={(e) => onFileChange(e, onChange)}
       />
-      <span className={fileName ? "file-input-uploaded" : "file-input-no-file"}>
-        {fileName || "No file uplaoded yet"}
+      <span title={filename} className={filename ? "file-input-uploaded" : "file-input-no-file"}>
+        {filename ? shortenFilename(filename) : "No file uploaded yet"}
       </span>
     </fieldset>
   );

@@ -5,6 +5,13 @@
     align-items: center;
 }
 
-.file-uploaded {
+.file-form-button {
+    width: 10rem;
+    font-weight: bold;
+    transition: 0.3s
+}
 
+.file-form-button:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
 }
